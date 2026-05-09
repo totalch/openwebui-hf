@@ -1,0 +1,7 @@
+open-webui
+fastapi
+uvicorn
+requests
+python-multipart
+itsdangerous
+jinja2
