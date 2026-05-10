@@ -161,11 +161,26 @@ async def chat(request: Request, prompt: str = Form(...)):
     }
 
     payload = {
-        "model": "openai/gpt-3.5-turbo",
-        "messages": [
-            {"role": "user", "content": prompt}
-        ]
-    }
+    # Default free OpenRouter routing
+    "model": "openrouter/auto",
+
+    # Prefer free models only
+    "route": "fallback",
+
+    # Extra provider preferences
+    "provider": {
+        "allow_fallbacks": True,
+        "data_collection": "deny"
+    },
+
+    # Message content
+    "messages": [
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ]
+}
 
     response = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
