@@ -162,7 +162,7 @@ async def chat(request: Request, prompt: str = Form(...)):
 
     payload = {
     # Default free OpenRouter routing
-    "model": "openrouter/auto",
+    "model": "openrouter/free",
 
     # Prefer free models only
     "route": "fallback",
